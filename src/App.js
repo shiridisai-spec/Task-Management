@@ -20,11 +20,6 @@ function App() {
     dispatch(setUserFromLocalStorage());
   }, [dispatch]);
 
-  const basename =
-    window.location.hostname === "shiridisai-spec.github.io"
-      ? "/Task-Management"
-      : "";
-
   return (
     <Router>
       <Routes>

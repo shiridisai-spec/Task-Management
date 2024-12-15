@@ -13,7 +13,6 @@ import {
 } from "../../slices/tasksSlice";
 import { logout } from "../../slices/authSlice";
 import "./taskManagement.css";
-import { XCircleIcon } from "@heroicons/react/16/solid";
 import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
 
 const TaskManagement = () => {
@@ -155,12 +154,6 @@ const TaskManagement = () => {
                 ) : (
                   <>
                     <span>{task.title}</span>
-                    {/* <button
-                      className="toggle-complete-button"
-                      onClick={() => handleToggleComplete(task.id)}
-                    >
-                      {task.completed ? "Undo" : "Complete"}
-                    </button> */}
                     <FaCheck
                       style={{
                         color: task.completed ? "green" : "gray",
@@ -169,13 +162,6 @@ const TaskManagement = () => {
                       onClick={() => handleToggleComplete(task.id)}
                     />
 
-                    {/* <button
-                      // className="edit-task-button"
-                      onClick={() => {
-                        dispatch(setEditingTaskId(task.id));
-                        setEditedTaskTitle(task.title);
-                      }}
-                    > */}
                     <FaEdit
                       onClick={() => {
                         dispatch(setEditingTaskId(task.id));
@@ -183,13 +169,7 @@ const TaskManagement = () => {
                       }}
                       style={{ color: "blue", fontSize: "16px" }}
                     />
-                    {/* </button> */}
-                    {/* <button
-                      className="delete-task-button"
-                      onClick={() => handleDeleteTask(task.id)}
-                    >
-                      Delete
-                    </button> */}
+
                     <FaTrash
                       onClick={() => handleDeleteTask(task.id)}
                       style={{ color: "red", fontSize: "16px" }}

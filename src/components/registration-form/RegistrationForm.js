@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../slices/authSlice"; // Import the registerUser action
+import { registerUser } from "../../slices/authSlice";
 import "../../components/login-form/loginform.css";
 
 const RegistrationForm = () => {
