@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { login, setUserFromLocalStorage } from "../../slices/authSlice";
-import "../login-form/loginform.css";
+import { registerUser } from "../../slices/authSlice"; // Import the registerUser action
+import "../../components/login-form/loginform.css";
 
-const LoginForm = () => {
+const RegistrationForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,11 +21,8 @@ const LoginForm = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
-  useEffect(() => {
-    dispatch(setUserFromLocalStorage());
-  }, [dispatch]);
+  const registeredUsers =
+    JSON.parse(localStorage.getItem("registeredUsers")) || [];
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -44,6 +41,10 @@ const LoginForm = () => {
     const errors = {};
     if (!formData.username.trim()) {
       errors.username = "Username is required";
+    } else if (
+      registeredUsers.some((user) => user.username === formData.username)
+    ) {
+      errors.username = "Username already exists";
     }
     if (!formData.password.trim()) {
       errors.password = "Password is required";
@@ -58,40 +59,23 @@ const LoginForm = () => {
     if (validateForm()) {
       setLoading(true);
 
-      const registeredUsers =
-        JSON.parse(localStorage.getItem("registeredUsers")) || [];
-
-      const user = registeredUsers.find(
-        (user) =>
-          user.username === formData.username &&
-          user.password === formData.password
+      dispatch(
+        registerUser({
+          username: formData.username,
+          password: formData.password,
+        })
       );
 
-      if (user) {
-        dispatch(login({ username: formData.username }));
-        setTimeout(() => {
-          setLoading(false);
-          navigate("/tasks");
-        }, 1000);
-      } else {
-        setFormErrors({
-          ...formErrors,
-          general: "Invalid username or password",
-        });
+      setTimeout(() => {
         setLoading(false);
-      }
+        navigate("/tasks");
+      }, 1000);
     }
   };
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/tasks");
-    }
-  }, [isAuthenticated, navigate]);
-
   return (
     <div className="login-form-container">
-      <h2 className="login-heading">Welcome Back! Please Log In</h2>
+      <h2 className="login-heading">Create a New Account</h2>
       <form onSubmit={handleSubmit} className="login-form">
         <div className="input-group">
           <label htmlFor="username">Username</label>
@@ -127,18 +111,18 @@ const LoginForm = () => {
           <p className="error-message">{formErrors.general}</p>
         )}
         <button type="submit" className="submit-button" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
+          {loading ? "Registering..." : "Register"}
         </button>
       </form>
 
       <p className="login-link-text">
-        Not yet signed up?
-        <Link to="/register" className="login-link">
-          Register
+        Already have an account?{" "}
+        <Link to="/login" className="login-link">
+          Log in here
         </Link>
       </p>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;

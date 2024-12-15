@@ -10,6 +10,7 @@ import LoginPage from "./pages/login-page/LoginPage";
 import TaskManagementPage from "./pages/task-management-page/TaskManagementPage";
 import { setUserFromLocalStorage } from "./slices/authSlice";
 import "./App.css";
+import RegistrationPage from "./pages/registration-page/RegistrationPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +31,13 @@ function App() {
         <Route
           path="/login"
           element={isAuthenticated ? <Navigate to="/tasks" /> : <LoginPage />}
+        />
+
+        <Route
+          path="/register"
+          element={
+            isAuthenticated ? <Navigate to="/tasks" /> : <RegistrationPage />
+          }
         />
 
         <Route

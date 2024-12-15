@@ -28,8 +28,17 @@ const authSlice = createSlice({
         state.user = JSON.parse(user);
       }
     },
+
+    registerUser(state, action) {
+      // Add new user to the registered users array in localStorage
+      let registeredUsers =
+        JSON.parse(localStorage.getItem("registeredUsers")) || [];
+      registeredUsers.push(action.payload);
+      localStorage.setItem("registeredUsers", JSON.stringify(registeredUsers));
+    },
   },
 });
 
-export const { login, logout, setUserFromLocalStorage } = authSlice.actions;
+export const { login, logout, setUserFromLocalStorage, registerUser } =
+  authSlice.actions;
 export default authSlice.reducer;
