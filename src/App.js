@@ -20,7 +20,7 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Router>
+    <Router basename="/Task-Management">
       <Routes>
         <Route
           path="/login"
