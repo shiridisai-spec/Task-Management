@@ -23,7 +23,7 @@ function App() {
     process.env.NODE_ENV === "production" ? "/Task-Management" : "";
 
   return (
-    <Router basename="/Task-Management">
+    <Router basename={basename}>
       <Routes>
         <Route
           path="/login"
