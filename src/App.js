@@ -25,7 +25,7 @@ function App() {
       : "";
 
   return (
-    <Router basename={basename}>
+    <Router>
       <Routes>
         <Route
           path="/login"
