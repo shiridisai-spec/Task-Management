@@ -158,6 +158,7 @@ const TaskManagement = () => {
                       style={{
                         color: task.completed ? "green" : "gray",
                         fontSize: "16px",
+                        cursor: "pointer",
                       }}
                       onClick={() => handleToggleComplete(task.id)}
                     />
@@ -167,12 +168,20 @@ const TaskManagement = () => {
                         dispatch(setEditingTaskId(task.id));
                         setEditedTaskTitle(task.title);
                       }}
-                      style={{ color: "blue", fontSize: "16px" }}
+                      style={{
+                        color: "blue",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                      }}
                     />
 
                     <FaTrash
                       onClick={() => handleDeleteTask(task.id)}
-                      style={{ color: "red", fontSize: "16px" }}
+                      style={{
+                        color: "red",
+                        fontSize: "16px",
+                        cursor: "pointer",
+                      }}
                     />
                   </>
                 )}
