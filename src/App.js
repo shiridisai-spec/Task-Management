@@ -20,7 +20,9 @@ function App() {
   }, [dispatch]);
 
   const basename =
-    process.env.NODE_ENV === "production" ? "/Task-Management" : "";
+    window.location.hostname === "shiridisai-spec.github.io"
+      ? "/Task-Management"
+      : "";
 
   return (
     <Router basename={basename}>
