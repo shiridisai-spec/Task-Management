@@ -13,6 +13,8 @@ import {
 } from "../../slices/tasksSlice";
 import { logout } from "../../slices/authSlice";
 import "./taskManagement.css";
+import { XCircleIcon } from "@heroicons/react/16/solid";
+import { FaCheck, FaEdit, FaTrash } from "react-icons/fa";
 
 const TaskManagement = () => {
   const navigate = useNavigate();
@@ -107,7 +109,7 @@ const TaskManagement = () => {
             placeholder="Enter task title"
           />
           <button onClick={handleAddTask} className="add-task-button">
-            Add Task
+            Add Task +
           </button>
           {error && <p className="error-message">{error}</p>}
         </div>
@@ -153,27 +155,45 @@ const TaskManagement = () => {
                 ) : (
                   <>
                     <span>{task.title}</span>
-                    <button
+                    {/* <button
                       className="toggle-complete-button"
                       onClick={() => handleToggleComplete(task.id)}
                     >
                       {task.completed ? "Undo" : "Complete"}
-                    </button>
-                    <button
-                      className="edit-task-button"
+                    </button> */}
+                    <FaCheck
+                      style={{
+                        color: task.completed ? "green" : "gray",
+                        fontSize: "16px",
+                      }}
+                      onClick={() => handleToggleComplete(task.id)}
+                    />
+
+                    {/* <button
+                      // className="edit-task-button"
                       onClick={() => {
                         dispatch(setEditingTaskId(task.id));
                         setEditedTaskTitle(task.title);
                       }}
-                    >
-                      Edit
-                    </button>
-                    <button
+                    > */}
+                    <FaEdit
+                      onClick={() => {
+                        dispatch(setEditingTaskId(task.id));
+                        setEditedTaskTitle(task.title);
+                      }}
+                      style={{ color: "blue", fontSize: "16px" }}
+                    />
+                    {/* </button> */}
+                    {/* <button
                       className="delete-task-button"
                       onClick={() => handleDeleteTask(task.id)}
                     >
                       Delete
-                    </button>
+                    </button> */}
+                    <FaTrash
+                      onClick={() => handleDeleteTask(task.id)}
+                      style={{ color: "red", fontSize: "16px" }}
+                    />
                   </>
                 )}
               </li>
