@@ -12,9 +12,9 @@ import {
   clearError,
 } from "../../slices/tasksSlice";
 import { logout } from "../../slices/authSlice";
-import "./taskManagementPage.css";
+import "./taskManagement.css";
 
-const TaskManagementPage = () => {
+const TaskManagement = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.auth?.user);
@@ -187,4 +187,4 @@ const TaskManagementPage = () => {
   );
 };
 
-export default TaskManagementPage;
+export default TaskManagement;

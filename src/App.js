@@ -6,11 +6,11 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import LoginPage from "./pages/login-page/LoginPage";
-import TaskManagementPage from "./pages/task-management-page/TaskManagementPage";
+import LoginPage from "./pages/LoginPage";
+import TaskManagementPage from "./pages/TaskManagementPage";
 import { setUserFromLocalStorage } from "./slices/authSlice";
 import "./App.css";
-import RegistrationPage from "./pages/registration-page/RegistrationPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 function App() {
   const dispatch = useDispatch();
