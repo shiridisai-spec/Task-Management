@@ -4,22 +4,23 @@ Task Management Application
 
 Overview
 
-This Task Management Application is built with React and uses Redux for state management. It allows users to register, log in, and manage their tasks effectively. The app is designed with simplicity and usability in mind, featuring clean UI and efficient functionality.
+This Task Management Application is built with React JS and uses Redux toolkit for state management. It allows users to register, log in, and manage their tasks effectively. The app is designed with simplicity and usability in mind, featuring clean UI and efficient functionality.
 
 Features
 	•	User Authentication:
-	•	User Registration with username and password and error validation.
-	•	Login functionality with error validation.
-	•	Persistent user sessions using local storage.
+	   •	User Registration with username and password and error validation.
+	   •	Login functionality with error validation.
+	   •	Persistent user sessions using local storage.
 	•	Task Management:
-	  •	Add, edit, and delete tasks.
-	  •	Mark tasks as completed.
-	  •	View a list of tasks in a structured layout.
-	•	State Management:
-	  •	Redux toolkit for managing authentication and task states.
+	   •	Add, edit, and delete tasks.
+	   •	Mark tasks as completed.
+   	   •	Filter tasks by their completion status.
+	   •	View a list of tasks in a structured layout.
+       •	State Management:
+	   •	Redux toolkit for managing authentication and task states.
 
 Tech Stack
-	•	Frontend: React, Redux tookit, React Router DOM
+	•	Frontend: Reac JS, Redux tookit, React Router DOM
 	•	Styling: CSS
 	•	Storage: Local Storage for session persistence
 	•	Development Tools: ESLint, Prettier, VS Code
@@ -34,7 +35,6 @@ Task-Management-App/
 │   │   │   ├── loginform.css
 │   │   └── registration-form/
 │   │       ├── RegistrationPage.js
-│   │       ├── registrationform.css
 │   │   └── tasks/
 │   │       ├── TaskManagement.js
 │   │       ├── taskManagement.css
@@ -51,9 +51,10 @@ Task-Management-App/
 │   ├── App.js
 │   ├── App.test.js
 │   ├── index.js
-│   ├── store.js
+│   ├── store/
+│   │   ├── store.js
 ├── .gitignore
 ├── package.json
 ├── README.md
-└── yarn.lock / package-lock.json
+└── package-lock.json
 
